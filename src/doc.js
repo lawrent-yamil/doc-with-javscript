@@ -45,3 +45,30 @@ const persona = {
   edad: 20,
   casado: false
 };
+
+/**
+ * Clase para trabajar con articulos
+ */
+class Articulo {
+  /**
+   * @param {Number} id ID del articulo
+   * @param {String} nombre Nombre del articulo
+   * @param {Number} precio Precio del articulo
+   */
+  constructor(id, nombre, precio) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+  }
+  /**
+   * Borra el articulo de la base de datos
+   * @param {Number|String} id El id a eliminar
+   * @returns Query  
+   */
+  static deleteArticulo(id) {
+    const query = `DELETE FROM articulos WHERE id = ${id}`;
+    return connection.query(query);
+  }
+}
+
+const articulo = new Articulo(1, 'Articulo 1', 100);
